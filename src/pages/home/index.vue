@@ -1,5 +1,5 @@
 <template>
-  <div class="home-page">{{title}}</div>
+  <div class="home-page">{{ userName }}</div>
 </template>
 
 <script>
@@ -10,8 +10,12 @@ export default {
 
   computed: {
     ...mapState({
-      title: state => state.home.title
+      userName: state => state.home.userName
     })
+  },
+
+  mounted () {
+    this.$store.dispatch('home/QUERY_USER_INFO')
   }
 }
 </script>

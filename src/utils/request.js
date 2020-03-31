@@ -46,12 +46,15 @@ request.interceptors.response.use(
     if (res) {
       if (res.data && res.data.code) {
         if (res !== 0) {
-          const msg = codeErrorMessage[res.data.code]
-          Message.error(msg || '返回未知错误')
+          const msg = codeErrorMessage[res.data.code] || '返回未知错误'
+          Message.error(msg)
+          return Promise.reject(msg)
         }
       }
     } else {
-      Message.error('响应成功，但是响应信息不存在')
+      const msg = '响应成功，但是响应信息不存在'
+      Message.error(msg)
+      return Promise.reject(msg)
     }
     return res.data
   },
