@@ -4,6 +4,7 @@
  */
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createLoadingPlugin from '@/utils/vuex-loading'
 
 Vue.use(Vuex)
 
@@ -24,5 +25,6 @@ files.keys().forEach(key => {
 })
 
 export default new Vuex.Store({
+  plugins: [createLoadingPlugin()],
   modules
 })

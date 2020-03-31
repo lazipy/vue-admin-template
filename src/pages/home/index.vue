@@ -1,5 +1,5 @@
 <template>
-  <div class="home-page">{{ userName }}</div>
+  <div class="home-page" v-loading="loading">{{ userName }}</div>
 </template>
 
 <script>
@@ -10,11 +10,13 @@ export default {
 
   computed: {
     ...mapState({
-      userName: state => state.home.userName
+      userName: state => state.home.userName,
+      loading: state => state.loading.effects['home/QUERY_USER_INFO']
     })
   },
 
   mounted () {
+    console.log(this.$store)
     this.$store.dispatch('home/QUERY_USER_INFO')
   }
 }
