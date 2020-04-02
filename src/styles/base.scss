@@ -1,0 +1,27 @@
+// float
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+// 文本溢出
+$lines: 2, 3, 4, 5;
+
+.text-ellipsis { 
+  @include text-truncate; 
+}
+
+@each $line in $lines {
+  .text-ellipsis-#{$line} {
+    @include ellipsis($line);
+  }
+}

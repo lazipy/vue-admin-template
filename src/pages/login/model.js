@@ -1,3 +1,5 @@
+import { login } from './service'
+
 export default {
   name: 'login',
   namespaced: true,
@@ -11,5 +13,16 @@ export default {
   },
 
   actions: {
+    /**
+     * 登录
+     * @param {*} param0
+     */
+    async USER_LOGIN ({ commit }) {
+      try {
+        return await login()
+      } catch (err) {
+        console.log(err)
+      }
+    }
   }
 }

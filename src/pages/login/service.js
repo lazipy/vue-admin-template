@@ -1,11 +1,11 @@
 import request from '@/utils/request'
 
 /**
- * GET 请求
+ * 登录
  */
-export function query (params) {
+export function login (params) {
   return request({
-    url: '/',
+    url: '/mock/login',
     method: 'get',
     params
   })

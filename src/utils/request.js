@@ -42,7 +42,7 @@ request.interceptors.request.use(
 
 // 响应前的拦截器
 request.interceptors.response.use(
-  (res) => {
+  res => {
     if (res) {
       if (res.data && res.data.code) {
         if (res !== 0) {

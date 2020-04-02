@@ -15,6 +15,17 @@ module.exports = {
   configureWebpack: config => {
   },
 
+  // 向预处理器 Loader 传递选项
+  css: {
+    // 是否使用css分离插件 ExtractTextPlugin
+    extract: true,
+    loaderOptions: {
+      sass: {
+        prependData: '@import "~@/styles/element-variables.scss";'
+      }
+    }
+  },
+
   // 插件的预设
   pluginOptions: {
     mock: { entry: './mock/index.js', debug: false }

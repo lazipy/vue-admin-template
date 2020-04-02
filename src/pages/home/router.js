@@ -1,7 +1,12 @@
+import Layout from '@/layouts'
+
 export default [
   {
     path: '/',
-    name: 'home',
-    component: () => import('./index.vue')
+    name: 'Layout',
+    component: Layout,
+    children: [
+      { path: '', name: 'home', component: () => import('./index.vue') }
+    ]
   }
 ]

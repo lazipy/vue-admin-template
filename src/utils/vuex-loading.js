@@ -44,14 +44,12 @@ const createLoadingPlugin = ({
     store.subscribeAction({
       // 发起一个action 之前会走这里
       before: action => {
-        console.log(`before action ${action.type}`)
         if (onEffect(action, includes, excludes)) {
           store.commit('loading/SHOW', action.type)
         }
       },
       // 发起一个action 之后会走这里
       after: action => {
-        console.log(`after action ${action.type}`)
         if (onEffect(action, includes, excludes)) {
           store.commit('loading/HIDE', action.type)
         }
