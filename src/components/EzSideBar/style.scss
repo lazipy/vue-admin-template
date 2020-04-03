@@ -1,0 +1,10 @@
+.ez-side-bar {
+  display: flex;
+  flex-direction: column;
+  background-color: #1f233e;
+  transition: width 0.2s;
+  
+  .el-menu {
+    border-right: none;
+  }
+}
