@@ -1,0 +1,49 @@
+.el-header {
+  display: flex;
+  box-shadow: 0 1px 4px rgba(0,21,41,.08);
+
+  .trigger {
+    height: 64px;
+    line-height: 64px;
+    padding-right: 20px;
+    cursor: pointer;
+
+    i {
+      font-size: 20px;
+      color: #565656;
+    }
+  }
+
+  .space {
+    flex: 1;
+  }
+
+  .user {
+    display: inline-flex;
+    align-items: center;
+    height: 64px;
+    padding: 0 12px;
+    color: $--color-text-primary;
+    cursor: pointer;
+    transition: all .3s;
+
+    &:hover {
+      background-color: $--color-primary-light-9;
+    }
+
+    .avatar {
+      width: 40px;
+      margin-right: 4px;
+    }
+  }
+}
+
+.el-dropdown-menu__item {
+  display: flex;
+  align-items: center;
+  min-width: 140px;
+
+  i {
+    font-size: 18px;
+  }
+}

@@ -16,8 +16,6 @@ if (dirs.length > 1) {
   moduleName = dirs.slice(0, -1).join('/')
 }
 
-console.log(moduleName)
-
 /**
  * 未传入页面名称则退出
  */
@@ -63,7 +61,7 @@ const scssTep = ''
 // model文件模版
 const modelTep =
 `export default {
-  name: '${dirName}',
+  name: '${moduleName || dirName}',
   namespaced: true,
   state: {
   },
@@ -79,13 +77,37 @@ const modelTep =
 }
 `
 
-// 路由模板
+// 单个页面路由模板
 const routerTep =
 `export default [
   {
     path: '/${dirName}',
     name: '${dirName}',
     component: () => import('./index.vue')
+  }
+]
+`
+
+// 模块页面路由模板
+const moduleRouteTep =
+`import Layout from '@/layouts'
+
+export default [
+  {
+    path: '/${moduleName}',
+    name: '${moduleName}',
+    component: Layout,
+    redirect: '/${moduleName}/${dirName}',
+    children: [
+      {
+        path: '${dirName}',
+        name: '${dirName}',
+        component: () => import('./${dirName}/index.vue'),
+        meta: {
+          title: '${dirName}'
+        }
+      }
+    ]
   }
 ]
 `
@@ -124,22 +146,42 @@ export function post (data) {
 if (moduleName) {
   if (!fs.existsSync(`./src/pages/${moduleName}`)) {
     fs.mkdirSync(`./src/pages/${moduleName}`)
+    process.chdir(`./src/pages/${moduleName}`)
+    /**
+     * 写入模板需要的文件及模板内容
+     */
+    fs.writeFileSync('model.js', modelTep)
+    fs.writeFileSync('router.js', moduleRouteTep)
+    fs.writeFileSync('service.js', serviceTep)
+
+    fs.mkdirSync(`./${dirName}`)
+    process.chdir(`./${dirName}`)
+    /**
+     * 写入页面需要的文件及模板内容
+     */
+    fs.writeFileSync('index.vue', pageTep)
+    fs.writeFileSync('style.scss', scssTep)
+  } else {
+    fs.mkdirSync(`./src/pages/${moduleName}/${dirName}`)
+    process.chdir(`./src/pages/${moduleName}/${dirName}`)
+    /**
+     * 写入页面需要的文件及模板内容
+     */
+    fs.writeFileSync('index.vue', pageTep)
+    fs.writeFileSync('style.scss', scssTep)
   }
-  fs.mkdirSync(`./src/pages/${moduleName}/${dirName}`)
-  process.chdir(`./src/pages/${moduleName}/${dirName}`)
 } else {
   fs.mkdirSync(`./src/pages/${dirName}`)
   process.chdir(`./src/pages/${dirName}`)
+  /**
+   * 写入页面需要的文件及模板内容
+   */
+  fs.writeFileSync('index.vue', pageTep)
+  fs.writeFileSync('model.js', modelTep)
+  fs.writeFileSync('router.js', routerTep)
+  fs.writeFileSync('service.js', serviceTep)
+  fs.writeFileSync('style.scss', scssTep)
 }
-
-/**
- * 写入页面需要的文件及模板内容
- */
-fs.writeFileSync('index.vue', pageTep)
-fs.writeFileSync('model.js', modelTep)
-fs.writeFileSync('router.js', routerTep)
-fs.writeFileSync('service.js', serviceTep)
-fs.writeFileSync('style.scss', scssTep)
 
 console.log(`模版${dirName}已创建,请手动开发页面`)
 

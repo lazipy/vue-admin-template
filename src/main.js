@@ -5,6 +5,7 @@ import store from './model'
 import ElementUI from 'element-ui'
 import 'normalize.css/normalize.css'
 import './styles/index.scss'
+import './components/index'
 
 Vue.use(ElementUI)
 Vue.config.productionTip = false

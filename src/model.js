@@ -14,7 +14,7 @@ Vue.use(Vuex)
  */
 const modules = {}
 
-const files = require.context('./pages', true, /model\.js/)
+const files = require.context('./pages', true, /model\.js$/)
 files.keys().forEach(key => {
   /**
    * 兼容 import export 和 require module.export 两种规范

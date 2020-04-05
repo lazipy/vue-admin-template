@@ -8,16 +8,16 @@
         <div class="label float-right"></div>
       </div>
       <div class="login-form__body">
-        <img class="avatar" src="./images/avatar.png">
+        <img class="avatar" src="../../assets/images/logo.png">
         <form>
-          <input type="text" placeholder="用户名" />
-          <input type="password" placeholder="密码" />
+          <input type="text" placeholder="username" @keyup.enter="login" />
+          <input type="password" placeholder="password" @keyup.enter="login" />
         </form>
       </div>
       <div v-loading="loading" class="login-form__footer">
         <input
           type="submit"
-          :value="loading ? '正在登录...' : '登录'"
+          :value="loading ? 'Login...' : 'Login'"
           @click="login"
         />
       </div>
@@ -46,7 +46,7 @@ export default {
   methods: {
     async login () {
       await this.$store.dispatch({ type: userLogin })
-      this.$router.push('/')
+      this.$router.replace('/')
     }
   }
 }

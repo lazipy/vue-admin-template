@@ -14,13 +14,15 @@ Vue.use(VueRouter)
  */
 let routes = []
 
-const files = require.context('./pages', true, /router\.js/)
+const files = require.context('./pages', true, /router\.js$/)
 files.keys().forEach(key => {
   /**
    * 兼容 import export 和 require module.export 两种规范
    */
   routes = [...routes, ...(files(key).default || files(key))]
 })
+
+routes.push({ path: '*', redirect: '/404' })
 
 // 实例化路由对象
 const router = new VueRouter({

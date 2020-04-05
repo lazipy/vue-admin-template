@@ -1,0 +1,24 @@
+.ez-scroller {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+
+  &-content {
+    min-width: 100%;
+    min-height: 100%;
+  }
+}
+
+.bscroll-horizontal-scrollbar,
+.bscroll-vertical-scrollbar {
+  z-index: 99 !important;
+}
+
+.bscroll-indicator {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  border: none !important;
+  cursor: pointer;
+  margin-left: 1px;
+}

@@ -285,13 +285,13 @@
       width: 14px;
       height: 14px; }
     .el-timeline-item__node--primary {
-      background-color: #4C70E8; }
+      background-color: #1890ff; }
     .el-timeline-item__node--success {
       background-color: #67C23A; }
     .el-timeline-item__node--warning {
       background-color: #E6A23C; }
     .el-timeline-item__node--danger {
-      background-color: #FA5E5F; }
+      background-color: #F56C6C; }
     .el-timeline-item__node--info {
       background-color: #909399; }
   .el-timeline-item__dot {

@@ -1,10 +1,91 @@
 .ez-side-bar {
   display: flex;
   flex-direction: column;
-  background-color: #1f233e;
-  transition: width 0.2s;
+  height: 100%;
+  background-color: #001529;
+  box-shadow: 2px 0 6px rgba(0,21,41,.35);
+  
+  .el-aside {
+    transition: width .3s;
+  }
+
+  .logo-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 64px;
+    padding: 0 20px;
+    overflow: hidden;
+    background-color: #001529;
+    cursor: pointer;
+    transition: all .3s;
+
+    img {
+      display: inline-block;
+      height: 32px;
+      vertical-align: middle;
+    }
+
+    h1 {
+      display: inline-block;
+      margin-left: 12px;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 20px;
+      vertical-align: middle;
+      animation: fade-in;
+      animation-duration: .3s;
+    }
+  }
   
   .el-menu {
     border-right: none;
+    margin-top: 16px;
+  }
+
+  .submenu-title {
+    margin-left: 8px;
+  }
+
+  .el-submenu__title {
+    overflow: hidden;
+  }
+
+  .el-submenu.is-active > .el-submenu__title {
+    color: #ffffff !important;
+
+    i {
+      color: #ffffff !important;
+    }
+  }
+
+  .el-menu-item:hover,
+  .el-submenu__title:hover {
+    color: #ffffff !important;
+    i {
+      color: #ffffff !important;
+    }
+  }
+
+  .el-submenu [class^='el-icon-'] {
+    position: relative;
+    top: -2px;
+  }
+
+  .el-menu-item.is-active {
+    background-color: $--color-primary !important;
+  }
+
+  .el-menu--collapse {
+    width: 80px;
+
+    .el-submenu__title {
+      padding-left: 28px !important;
+      white-space: pre-wrap;
+
+      i {
+        font-size: 20px;
+      }
+    }
   }
 }
