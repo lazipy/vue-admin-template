@@ -1,22 +1,38 @@
 <template>
-  <div class="home-page" v-loading="loading">{{ userName }}</div>
+  <div class="home-page">
+    <el-row :gutter="12">
+      <el-col :span="10">
+        <Welcome />
+        <Channel />
+      </el-col>
+      <el-col :span="14">
+        <Area />
+      </el-col>
+    </el-row>
+
+    <Activity />
+  </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import Welcome from './components/Welcome'
+import Channel from './components/Channel'
+import Area from './components/Area'
+import Activity from './components/Activity'
 
 export default {
   name: 'home',
 
-  computed: {
-    ...mapState({
-      userName: state => state.home.userName,
-      loading: state => state.loading.effects['home/QUERY_USER_INFO']
-    })
+  components: {
+    Welcome,
+    Channel,
+    Area,
+    Activity
   },
 
-  mounted () {
-    this.$store.dispatch('home/QUERY_USER_INFO')
+  data () {
+    return {
+    }
   }
 }
 </script>

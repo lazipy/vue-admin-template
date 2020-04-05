@@ -1,0 +1,14 @@
+.ez-charts {
+  &__center > div {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  &__left > div {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+  &__right > div {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+  }
+}

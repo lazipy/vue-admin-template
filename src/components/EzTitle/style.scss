@@ -1,0 +1,21 @@
+.ez-title {
+  position: relative;
+  height: 48px;
+  line-height: 48px;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  padding-left: 40px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 24px;
+    background-color: $--color-primary;
+    border-radius: 4px;
+  }
+}

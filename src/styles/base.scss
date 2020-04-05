@@ -25,3 +25,10 @@ $lines: 2, 3, 4, 5;
     @include ellipsis($line);
   }
 }
+
+
+// 页面相关
+.panel {
+  background-color: #fff;
+  border-radius: 4px;
+}

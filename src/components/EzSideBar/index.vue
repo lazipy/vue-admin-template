@@ -1,5 +1,5 @@
 <template>
-  <div class="ez-side-bar">
+  <div class="ez-side-bar" id="side_bar">
     <ez-scroller>
       <el-aside :width="currentWidth">
         <!-- logo -->

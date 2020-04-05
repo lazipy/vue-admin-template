@@ -4,7 +4,6 @@
     <!-- 右侧内容 -->
     <el-container direction="vertical">
       <ez-header />
-      <ez-tag-view />
       <el-main>
         <ez-content />
       </el-main>
